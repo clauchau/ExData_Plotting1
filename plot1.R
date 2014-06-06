@@ -1,6 +1,7 @@
+dataFile <- "./data/household_power_consumption.txt"
+
 ## Get the file ready
 getFile <- function() {
-  dataFile <- "./data/household_power_consumption.txt"
   if (!file.exists(dataFile)) {     # Get the data if locally absent
     zipFile <- "./data/exdata-data-household_power_consumption.zip"
     if (!file.exists(zipFile)) {    # Get the zip file if locally absent
