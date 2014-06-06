@@ -27,10 +27,12 @@ readData <- function () {
   DT[, Global_active_power:=as.numeric(Global_active_power)]                           # and num strings
 }
 
-## Plot
+## Plot (with English locales)
 getFile()
 readData()
-png("plot1.png", width = 480, height = 480)
-hist(DT$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)",
-     main = "Global Active Power")
+lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
+png("plot2.png", width = 480, height = 480)
+plot(DT$datetime, DT$Global_active_power, type = "l",
+      ylab = "Global Active Power (kilowatts)", xlab = "", main = "")
 dev.off()
+Sys.setlocale("LC_TIME", lct)
